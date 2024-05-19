@@ -1,0 +1,58 @@
+weights of a parameter/feature is auto learned by the model itself, no need for us to give exact values
+
+Different perceptrons (basic component of a nueral network) at different layers of the model might hold different weights. 
+
+Programmer responsibilty : Choose the number of perceptrons per layer and the number of middle layers (layers of perceptrons).
+
+Activation function : gives them a choice to change the weighted sum of perceptron so that the model is more flexible and can learn better
+
+Truth : label of the data. NN are for supervised learning
+
+Initially will start with random weights, take the difference between actual truth and prediction to determine weights.
+
+Loss function: measure of how far is actual value is from prediction. 
+
+Back propagation: Passing back the loss score and update all the initially random weights. It uses gradient descent, to find weights for the NN where the loss function is the lowest.
+
+Optimizer: Is the gradient descent which is applied the perceptrons. 
+
+Loss fucntion finds how far off the actual and predictions are, Loss score gets the derivative of the loss function and the Optimizer applies gradient descent to the derivative and applies it to the various weights to find hte actual weight. 
+
+Lower the loss function, better the model 
+
+Each nueron will be extracting a feature, the first layer will detect the broader reigon and as the number of layers increase the nueron sub set will detect a full feature. 
+Ex: first one will detect a jaw shape, after few layers (teeth, mouth, tongue) the set of neurons will be able to detect a whole face. 
+
+We cannot pin point how and what features a neuron is extracting as all in numbers and not in images or abstracts.
+
+More neuron --> More layers --> complex model to recognize anything.
+
+In image processing, when a picture of 20*20 pixels is we flatten the image (take all the rows apart and flip them to make colums, now we place one column below the other) to get a imput of 400 pixel. This is be the number of imputs in the imput layer.
+
+The output layer will contain as many classifications as possible (in a number classifier it will have 10 values 0-9) and will have a probability of the prediction belonging to each class (an input of 4 will have low probability that it is any other number and will have a higher probability for class 4)
+
+Digit classification uses "cross entropy loss". If wieghts are perfect the loss fucntion will be very low.
+
+To make a neural network more robust: increase number of layers (successive layer has lesser neurons), introduce dropouts between layers (0.2 best), increase the number of interations
+
+Creterion: Measures difference between actual and predicted output
+ multi-class predictions ----> Cross-Entropy Loss (best) 
+ regression -----> Mean Squared Error (MSE) or Mean Absolute Error (MAE)
+
+Optimizer: The optimizer is responsible for updating the weights of the neural network during the training process based on the gradients computed by backpropagation. 
+Most used (for all problems) ---> Adam (advantages of momentum and RMSProp)
+Basic one ----> Stochastic Gradient Descent
+Others : RMSProp, Adagrad, Adadelta
+
+Learning Rate (lr): The learning rate is a hyperparameter that controls the step size at which the optimizer updates the weights during training.
+For most problems, a learning rate in the range of 0.001 to 0.1 is a reasonable starting point.
+learning rate schedulers, which adjust the learning rate during training based on a predefined schedule or based on the validation loss.
+
+
+**General guidelines for an image recognition task like identifying helicopters or planes:
+
+Criterion: Use Cross-Entropy Loss for multi-class classification problems.
+Optimizer: Start with the Adam optimizer, which is a good default choice for many problems.
+Learning Rate: Begin with a learning rate of 0.001 or 0.01 and adjust it based on the model's performance during training.**
+
+__You can monitor the training and validation loss curves to assess the model's performance and make adjustments accordingly. If the loss is not decreasing or is fluctuating heavily, you may need to lower the learning rate or change the optimizer. If the loss is decreasing too slowly, you can try increasing the learning rate or using a different optimizer.__

@@ -1,0 +1,35 @@
+Model deployment: Since Machine Learning models are dependent on data, if the truth values of the same data changes, then the model needs to be update ----> Not a one time thing
+		  Just the front end is seen by the user, while the code base is managed by coders and not accessed by the users ----> Use APIs
+
+ML models are alive and not cold code, as they change with any changes in trainig data.
+
+API is a middle-man: The user is the client ---> Sends in test data ;;; Code and ML model is in the server side ----> Takes in test data and outputs prediction
+		    API is the only middleman which relays the test data to the model and gets back the prediction from the model to the client (user)
+
+FastAPI is very robust, fast, high performance, validates data easily, and has extensive documentation
+
+uvicorn is a light weight net server that is used to set up API. It sets up a web browser, look for it in the fastAPI local file and the app instance inside it host y and port x
+
+Docker: platform for developing, shipping, and running applications/projects as containers. 
+
+Containers pack up all the dependencies and libraries and helps it to be exported as one container. Act as isolated environment for ML project's, it is light weight, scalable and made into one environment. Makes the applications run in any machine, dependency conflicts, hardware incompatibility, deployment roadblocks.
+
+Docker file: List of instructions detailing the needs for the project. MUST BE NAMED "Dockerfile". It has lines of commands which is needed to install dependencies and get the server up for fastapi(also other api configs required) and the version of python to run it in.
+
+Docker image: Following a docker file gets you a docker image ---> cold environment with all necessary libraries required for product run. Bulding a docker file will give you a image.
+
+Docker Container: By running a docker image you get a container. Container is a isolated environment just for running the program inside it in a perfect environment, it is on a computer and it uses the same hardware and os, but is packaged seperately, hence can be exported easily. 
+
+Build a docker file ---> Image. Run it ----> Docker container
+
+Hierarchy of program: Pytorch model < FastAPI applicaton < Docker container.
+
+Docker hub is a place with pre-installed images which can be easily passed as a line in the docker file to configure.
+
+When the model is dockerized, the client sends a API request to the docker container, and the FastAPI app runs inside the docker container and the prediction is returned to the client from the docker container.
+
+The docker build command needs a "." at the end to build it if you are already in the current folder. Might take upto 10 minutes.
+
+We will map the local host in the PC with the docker container so that the same code for the client works when the model is containerized.
+
+docker compose: Used when we need to run and compose at a time. I will have the dependencies in one yaml file and it is launched in one file.

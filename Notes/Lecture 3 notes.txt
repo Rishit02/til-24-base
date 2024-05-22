@@ -1,0 +1,32 @@
+Computer vision: Branch of AI in which we teach computers to identify things we are interested in.
+
+Every images is a array from 0 - 255, 0 is the black and 255 is white.
+
+Channels: RGB, BGR, HSL, etc. Each of them only have 3 values ranging from 0-255
+
+Object detection: 
+Classification: Finds if the object is the one we want to be detecting
+Locatization: Finds where in the image the object that we want to find is
+Object Detection: Finds which of the objects in the image are the one we are looking for
+Semantic Segmentation: Separating both instances of an image we want, in a precise manner
+
+Single-Shot Detector (SSD):
+
+Contains 2 components - Backbone: Pretrained image CNN (Resnet, VGG)
+		      - SSD Head: More convolutional layers added to backbone, pridects the boxes which are to be detected
+
+SSD can detect images of the same thing in different scale as it is trained with multiple size and angle of same object
+
+YOLO architecture: It can classify, detect(recognize different objects), segment(finds boarder of objects), track(trace an object in a video) and pose(The limbs of a person are straight lines and joints are dots).
+
+CV Models: Torch Vision MOdels, TOrch OFficial Tutorial, Torch SSD_VGG, Nvidia Hub implementation, COCO datasets
+
+Load model ----> Load image -----> Preprocess image(tensor conversion, normalization) ----> Label encoding ---> Extracting detection and printing
+
+Multimodel models: Integrations which can take multiple inputs such as text, image and audio and process them togather for a prediction.
+Have: better performance, richer understanding, facilitate new perspectives
+
+CLIP: Is a pretrained multimodal model which can predict future instane or something about an image. Is like chatgpt 2
+
+Vision Language model: Takes in Texts and Images as arrays. Both have a shared space (form a multidimentional array) where the text and the related image are in close proximity. This helps model understand the image = text.
+
